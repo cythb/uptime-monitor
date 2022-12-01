@@ -2,6 +2,7 @@ export interface UpptimeConfig {
     owner: string;
     repo: string;
     "user-agent"?: string;
+    apiBaseUrl?: string;
     sites: {
         check?: "http" | "tcp-ping" | "ws";
         method?: string;
@@ -44,6 +45,9 @@ export interface UpptimeConfig {
             url: string;
         }[];
         publish?: boolean;
+        apiBaseUrl?: string;
+        ghRepo?: string;
+        ghOwner?: string;
     };
     skipDescriptionUpdate?: boolean;
     skipTopicsUpdate?: boolean;

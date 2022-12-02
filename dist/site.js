@@ -14,6 +14,7 @@ const generateSite = async () => {
     if (config.skipGeneratingWebsite)
         return;
     const sitePackage = config.customStatusWebsitePackage || "@upptime/status-page";
+    const prefix = sitePackage.startsWith('@') ? "" : "@";
     const octokit = await github_1.getOctokit();
     const repoDetails = await octokit.repos.get({ owner, repo });
     const siteDir = "site";
@@ -35,7 +36,7 @@ const generateSite = async () => {
     shelljs_1.exec("npm init -y");
     config.repo;
     shelljs_1.exec(`npm i ${sitePackage}`);
-    shelljs_1.cp("-r", `node_modules/${sitePackage}/*`, ".");
+    shelljs_1.cp("-r", `node_modules/${prefix}${sitePackage}/*`, ".");
     shelljs_1.exec("npm i");
     shelljs_1.exec("npm run export");
     shelljs_1.mkdir("-p", "status-page/__sapper__/export");

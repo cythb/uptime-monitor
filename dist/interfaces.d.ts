@@ -2,7 +2,7 @@ export interface UpptimeConfig {
     owner: string;
     repo: string;
     "user-agent"?: string;
-    apiBaseUrl?: string;
+    githubUserContentBaseUrl?: string;
     sites: {
         check?: "http" | "tcp-ping" | "ws";
         method?: string;
